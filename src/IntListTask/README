@@ -1,3 +1,12 @@
 README
 
-Hi Ich bin eine README Datei und niemand leist mich normalerweise
+The Main advantage of an Array List are the in java already implemented functions such as .get() 
+or .add(). 
+These need to be added manualy to the Array Class. 
+An other advantage of Array List is, that the size of an Array is fixed in the creation and can't
+be changed afterwards. For an longer array you need tp create a new one and copy the existing values 
+into the new Atray.
+
+Fyi an array can store Objecs and ptimitive Datatypes (like int). An Arraylist can only store 
+Objects. If you enter an primitive Value into an Arraylist it will be converted into an Object automaticly
+by the Arraylist (int into Integer)
