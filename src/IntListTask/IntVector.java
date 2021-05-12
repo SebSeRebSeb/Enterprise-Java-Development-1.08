@@ -1,41 +1,36 @@
 package IntListTask;
 
-public class IntVector implements IntList{
-    public Integer[] Test = new Integer[10];
+public class IntVector implements IntList {
+    public int[] Test;
 
-    //Setter and Constructor Method to change Test Arr
-
-
-
-    public void setTest(Integer[] test) {
-        Test = test;
+    public IntVector() {
+        this.Test = new int[10];
     }
 
-    public int getLength (){
-        return Test.length;
+    public int getLength() {
+        return this.Test.length;
     }
 
     @Override
     public void add(int val) {
-        int length = Test.length;
+        int length = this.Test.length;
         int c = val;
-        for( int i= 0; i<length;i++){
-            if (i<=length){
-                Test[i]=c;
-            }else{
-                int newLength = length*2;
-                int[] newArr = new int[newLength];
-                newArr [i] = c;
-                System.arraycopy(Test, 0, newArr, length, newLength);
-
-                // set newArr = Test
-                }
+        int newArr[] = new int[length*2];
+        for (int i = 0; i < length; i++) {
+            if (i < length) {
+                this.Test[i] = c;
+            } else {
+                int newLength = length * 2;;
+                newArr[i] = c;
+                System.arraycopy(this.Test, 0, newArr, 0, newLength);
+                this.Test = newArr;
+            }
         }
 
     }
+
     @Override
     public int get(int id) {
-        return Test[id];
-
+        return this.Test[id];
     }
 }
