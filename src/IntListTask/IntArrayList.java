@@ -2,33 +2,51 @@ package IntListTask;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class IntArrayList implements IntList {
-    public ArrayList<Integer> IntArrayList = new ArrayList<Integer>(10);
-    public int sizeStart = 10;
+    private Integer[] array = new Integer[10];
+
 
     @Override
     public void add(int val) {
-        int length = IntArrayList.size();
-        int c = val;
-        for (int i = 1; i < length; i++) {
-            if (i > length) {
-                IntArrayList.ensureCapacity(sizeStart / 2 * 3);
-                sizeStart = sizeStart / 2 * 3;
-                IntArrayList.add(i, c);
-            } else {
-                IntArrayList.add(i, c);
+        boolean hasBeenAdded = false;
+        for (int i=0; i<array.length; i++) {
+            // Validate if has an empty position in the array
+            if (array[i] == null) {
+                array[i] = val;
+                hasBeenAdded = true;
+                break;
             }
         }
 
+        // Validate if the item has been added
+        if (!hasBeenAdded) {
+            System.out.println("Update size " + array.length);
+
+            // Calculate new length
+            int newLength = array.length + array.length/2;
+
+            // Create new array
+            Integer[] newArray = new Integer[newLength];
+
+            // Fill new array with old array values
+            for (int i=0; i<array.length; i++) {
+                newArray[i] = array[i];
+            }
+            newArray[array.length] = val;
+
+            // Override the array with newArray
+            array = newArray;
+        }
     }
 
     public int getSize() {
-        return IntArrayList.size();
+        return array.length;
     }
 
     @Override
     public int get(int id) {
-        return IntArrayList.get(id);
+        return array[id];
     }
 }
